@@ -4,14 +4,15 @@ import { InjectModel } from '@nestjs/mongoose'
 import { CreateUserDto } from './dto/create-user.dto'
 import { User } from './schemas/user.schema'
 import * as bcrypt from 'bcrypt'
+import { handleRetry } from '@nestjs/mongoose/dist/common/mongoose.utils'
 
 
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async find(): Promise<User[] | undefined> {
-    return this.userModel.find()
+  async find() {
+    return await this.userModel.find()
   }
 
   async findOneByEmail(email: string): Promise<User | undefined> {
