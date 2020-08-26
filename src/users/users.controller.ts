@@ -3,8 +3,9 @@ import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { ApiHeaders } from 'src/decorators/api'
 import { ApiTags } from '@nestjs/swagger'
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard'
 import { User } from './schemas/user.schema'
+import { RolesGuard } from 'src/guards/roles.guard'
 
 @ApiTags('users')
 @Controller('users')
@@ -28,6 +29,7 @@ export class UsersController {
 
   @ApiHeaders()
   @UseGuards(JwtAuthGuard)
+  @UseGuards(RolesGuard)
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.usersService.delete(id)

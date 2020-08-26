@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
@@ -5,7 +6,7 @@ import { ValidationPipe } from '@nestjs/common'
 import { Logger } from '@nestjs/common'
 import * as helmet from 'helmet'
 import * as bodyParser from 'body-parser'
-import 'dotenv/config'
+
 
 const port = process.env.PORT || 3000
 async function bootstrap() {

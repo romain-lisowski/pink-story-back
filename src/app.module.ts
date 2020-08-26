@@ -9,7 +9,7 @@ import { UsersModule } from './users/users.module'
   imports: [
     AuthModule, 
     UsersModule, 
-    MongooseModule.forRoot('mongodb://localhost/pink')],
+    MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING)],
   controllers: [AppController],
   providers: [AppService],
 })

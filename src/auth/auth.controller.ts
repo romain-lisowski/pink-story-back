@@ -3,7 +3,7 @@ import { ApiHeaders } from 'src/decorators/api'
 import { ApiTags } from '@nestjs/swagger'
 import { AuthService } from './auth.service'
 import { LocalAuthGuard } from './local-auth.guard'
-import { JwtAuthGuard } from './jwt-auth.guard'
+import { JwtAuthGuard } from '../guards/jwt-auth.guard'
 import { LoginUserDto } from 'src/users/dto/login-user.dto'
 
 @ApiTags('auth')
