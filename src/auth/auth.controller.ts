@@ -2,7 +2,7 @@ import { Controller, Get, Request, Post, UseGuards, Body, ValidationPipe } from 
 import { ApiHeaders } from 'src/decorators/api'
 import { ApiTags } from '@nestjs/swagger'
 import { AuthService } from './auth.service'
-import { LocalAuthGuard } from './local-auth.guard'
+import { LocalAuthGuard } from '../guards/local-auth.guard'
 import { JwtAuthGuard } from '../guards/jwt-auth.guard'
 import { LoginUserDto } from 'src/users/dto/login-user.dto'
 

@@ -14,6 +14,9 @@ export class User extends Document {
     index: true
   })
   password: string
+
+  @Prop()
+  role: string
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)

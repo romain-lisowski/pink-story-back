@@ -16,16 +16,18 @@ export class AuthService {
       const isPasswordMatching = await bcrypt.compare(pass, user.password)
       if (isPasswordMatching) {
         return user
-      }   
+      }
     }
     
     return null
   }
 
   async login(user: any) {
-    const payload = { email: user.email, sub: user.userId }
+    const userDb = await this.usersService.findOneByEmail(user.email)
+    const payload = { email: userDb.email, role: userDb.role }
     return {
       access_token: this.jwtService.sign(payload),
     }
   }
+
 }

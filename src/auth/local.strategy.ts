@@ -10,7 +10,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super({
       passReqToCallback: true,
       usernameField: 'email',
-      passwordField: 'password',
+      passwordField: 'password'
     })
   }
   
