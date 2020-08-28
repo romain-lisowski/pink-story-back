@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Delete, ValidationPipe, Get, UseGuards, Param, SetMetadata } from '@nestjs/common'
+import { Controller, Post, Body, Delete, ValidationPipe, Get, UseGuards, Param, SetMetadata, Put } from '@nestjs/common'
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { ApiHeaders } from 'src/decorators/api'
@@ -6,6 +6,7 @@ import { ApiTags } from '@nestjs/swagger'
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard'
 import { User } from './schemas/user.schema'
 import { RolesGuard } from 'src/guards/roles.guard'
+import { UpdateUserDto } from './dto/update-user.dto'
 
 @ApiTags('users')
 @Controller('users')
@@ -27,6 +28,14 @@ export class UsersController {
   @Post()
   async create(@Body(new ValidationPipe({transform: true})) createUserDto: CreateUserDto): Promise<User> {
     return this.usersService.create(createUserDto)
+  }
+
+  @ApiHeaders()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @SetMetadata('roles', ['admin'])
+  @Put(':id')
+  async update(@Param('id') id: string, @Body(new ValidationPipe({transform: true})) updateUserDto: Partial<UpdateUserDto>): Promise<Partial<User>> {
+    return this.usersService.update(id, updateUserDto)
   }
 
   @ApiHeaders()
