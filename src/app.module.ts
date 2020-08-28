@@ -9,7 +9,10 @@ import { UsersModule } from './users/users.module'
   imports: [
     AuthModule, 
     UsersModule, 
-    MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING)],
+    MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING, {
+      useFindAndModify: false,
+      useCreateIndex: true
+    })],
   controllers: [AppController],
   providers: [AppService],
 })
