@@ -5,9 +5,6 @@ import { Gender } from '../enums/gender.enum'
 import { Role } from '../enums/role.enum'
 import { Orientation } from '../enums/orientation.enum'
 import { ToArray } from 'src/helpers/to-array.helper'
-import { Timestamp } from 'mongodb'
-import { timeStamp } from 'console'
-
 @Schema({
     toJSON: {
       transform: function(doc, ret, options) {
@@ -52,7 +49,7 @@ export class User extends Document {
   @Prop({
     type: String,
     enum: ToArray(Orientation),
-    default: 'none'
+    default: 'hetero'
   })
   orientation: string
 
