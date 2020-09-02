@@ -1,5 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
+import { Optional } from '@nestjs/common'
+import { Gender } from '../enums/gender.enum'
+import { Role } from '../enums/role.enum'
+import { Orientation } from '../enums/orientation.enum'
+import { ToArray } from 'src/helpers/to-array.helper'
 
 @Schema({
     toJSON: {
@@ -24,9 +29,34 @@ export class User extends Document {
 
   @Prop({
     type: String,
+    enum: ToArray(Role),
     default: 'user'
   })
   role: string
+
+  @Prop({
+    unique: true,
+    index: true
+  })
+  pseudo: string
+
+  @Prop({
+    type: String,
+    enum: ToArray(Gender),
+    default: 'other'
+  })
+  gender: string
+
+  @Prop({
+    type: String,
+    enum: ToArray(Orientation),
+    default: 'none'
+  })
+  orientation: string
+
+  @Prop()
+  @Optional()
+  description: string
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)
