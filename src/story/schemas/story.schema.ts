@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { Document } from 'mongoose'
+import { Document, Types } from 'mongoose'
+import { User } from 'src/users/schemas/user.schema'
 
 @Schema({
     toJSON: {
@@ -9,6 +10,13 @@ import { Document } from 'mongoose'
     }
 })
 export class Story extends Document {
+  @Prop({
+    type: Types.ObjectId,
+    ref:'User',
+    required: true
+  })
+  user: User
+
   @Prop()
   title: string
 
@@ -17,7 +25,7 @@ export class Story extends Document {
 
   @Prop()
   content: string
-  
+
 }
 
 export const StorySchema = SchemaFactory.createForClass(Story)
