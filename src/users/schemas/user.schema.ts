@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
-import { Exclude } from 'class-transformer'
-import { Options } from '@nestjs/common'
 
 @Schema({
     toJSON: {

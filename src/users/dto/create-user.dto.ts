@@ -12,5 +12,5 @@ export class CreateUserDto {
 
   @ApiProperty()
   @IsString()
-  role: string
+  readonly role: string
 }

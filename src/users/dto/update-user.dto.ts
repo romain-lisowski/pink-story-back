@@ -12,5 +12,5 @@ export class UpdateUserDto {
 
   @ApiProperty()
   @IsString()
-  role: string
+  readonly role: string
 }

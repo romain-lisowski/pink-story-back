@@ -29,8 +29,6 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: Partial<UpdateUserDto>): Promise<Partial<User>> {    
-    console.log(id)
-    console.log(updateUserDto)
     return this.userModel.findByIdAndUpdate(id, updateUserDto)
   }
 
