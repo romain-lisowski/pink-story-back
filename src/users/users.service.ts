@@ -4,8 +4,6 @@ import { InjectModel } from '@nestjs/mongoose'
 import { CreateUserDto } from './dto/create-user.dto'
 import { User } from './schemas/user.schema'
 import * as bcrypt from 'bcrypt'
-import { UpdateUserDto } from './dto/update-user.dto'
-
 
 @Injectable()
 export class UsersService {
@@ -28,8 +26,8 @@ export class UsersService {
     return createdUser.save()
   }
 
-  async update(id: string, updateUserDto: Partial<UpdateUserDto>): Promise<Partial<User>> {    
-    return this.userModel.findByIdAndUpdate(id, updateUserDto)
+  async update(id: string, createUserDto: Partial<CreateUserDto>): Promise<Partial<User>> {    
+    return this.userModel.findByIdAndUpdate(id, createUserDto)
   }
 
   async delete(id: string): Promise<User> {

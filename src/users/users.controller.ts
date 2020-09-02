@@ -6,7 +6,6 @@ import { ApiTags } from '@nestjs/swagger'
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard'
 import { User } from './schemas/user.schema'
 import { RolesGuard } from 'src/guards/roles.guard'
-import { UpdateUserDto } from './dto/update-user.dto'
 
 @ApiTags('users')
 @Controller('users')
@@ -24,7 +23,7 @@ export class UsersController {
 
   @ApiHeaders()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @SetMetadata('roles', ['admin'])
+  @SetMetadata('roles', ['admin', 'moderator'])
   @Post()
   async create(@Body(new ValidationPipe({transform: true})) createUserDto: CreateUserDto): Promise<User> {
     return this.usersService.create(createUserDto)
@@ -32,15 +31,15 @@ export class UsersController {
 
   @ApiHeaders()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @SetMetadata('roles', ['admin'])
+  @SetMetadata('roles', ['admin', 'moderator'])
   @Put(':id')
-  async update(@Param('id') id: string, @Body(new ValidationPipe({transform: true})) updateUserDto: Partial<UpdateUserDto>): Promise<Partial<User>> {
-    return this.usersService.update(id, updateUserDto)
+  async update(@Param('id') id: string, @Body(new ValidationPipe({transform: true})) createUserDto: Partial<CreateUserDto>): Promise<Partial<User>> {
+    return this.usersService.update(id, createUserDto)
   }
 
   @ApiHeaders()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @SetMetadata('roles', ['admin'])
+  @SetMetadata('roles', ['admin', 'moderator'])
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.usersService.delete(id)

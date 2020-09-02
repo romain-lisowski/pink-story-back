@@ -1,8 +1,8 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 
-function matchRoles(roles: string[], userRoles: string[]) {
-  return roles == userRoles
+function matchRoles(roles: string[], userRole: string) {
+  return roles.includes(userRole)
 }
 
 @Injectable()

@@ -10,7 +10,6 @@ import { Document } from 'mongoose'
     }
 })
 export class User extends Document {
-  
   @Prop({
     unique: true,
     index: true
@@ -23,7 +22,10 @@ export class User extends Document {
   })
   password: string
 
-  @Prop()
+  @Prop({
+    type: String,
+    default: 'user'
+  })
   role: string
 }
 
