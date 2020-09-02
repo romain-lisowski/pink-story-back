@@ -1,12 +1,10 @@
 import { Controller, Post, Body, Delete, ValidationPipe, Get, UseGuards, Param, SetMetadata, Put } from '@nestjs/common'
 import { StoriesService } from './stories.service'
-import { ApiHeaders } from 'src/decorators/api'
+import { ApiHeaders } from '../decorators/api'
 import { ApiTags } from '@nestjs/swagger'
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard'
-import { RolesGuard } from 'src/guards/roles.guard'
+import { JwtAuthGuard } from '../guards/jwt-auth.guard'
 import { Story } from './schemas/story.schema'
 import { CreateStoryDto } from './dto/create-story.dto'
-import { UpdateStoryDto } from './dto/update-story.dto'
 
 @ApiTags('stories')
 @Controller('stories')
@@ -30,8 +28,8 @@ export class StoriesController {
   @ApiHeaders()
   @UseGuards(JwtAuthGuard)
   @Put(':id')
-  async update(@Param('id') id: string, @Body(new ValidationPipe({transform: true})) updateStoryDto: Partial<UpdateStoryDto>): Promise<Partial<Story>> {
-    return this.storiesService.update(id, updateStoryDto)
+  async update(@Param('id') id: string, @Body(new ValidationPipe({transform: true})) createStoryDto: Partial<CreateStoryDto>): Promise<Partial<Story>> {
+    return this.storiesService.update(id, createStoryDto)
   }
 
   @ApiHeaders()

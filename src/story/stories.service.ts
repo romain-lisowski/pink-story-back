@@ -3,8 +3,6 @@ import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { CreateStoryDto } from './dto/create-story.dto'
 import { Story } from './schemas/story.schema'
-import { UpdateStoryDto } from './dto/update-story.dto'
-
 
 @Injectable()
 export class StoriesService {
@@ -19,8 +17,8 @@ export class StoriesService {
     return createdStory.save()
   }
 
-  async update(id: string, updateStoryDto: Partial<UpdateStoryDto>): Promise<Partial<Story>> {    
-    return this.storyModel.findByIdAndUpdate(id, updateStoryDto)
+  async update(id: string, createStoryDto: Partial<CreateStoryDto>): Promise<Partial<Story>> {    
+    return this.storyModel.findByIdAndUpdate(id, createStoryDto)
   }
 
   async delete(id: string): Promise<Story> {

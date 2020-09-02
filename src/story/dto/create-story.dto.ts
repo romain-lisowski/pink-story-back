@@ -1,8 +1,8 @@
 import { IsString, IsDate, IsEnum, IsOptional } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
-import { User } from 'src/users/schemas/user.schema'
-import { Orientation } from 'src/enums/orientation.enum'
-import { Category } from 'src/enums/category'
+import { User } from '../../users/schemas/user.schema'
+import { Orientation } from '../../enums/orientation.enum'
+import { Category } from '../../enums/category'
 
 export class CreateStoryDto {
   @ApiProperty()

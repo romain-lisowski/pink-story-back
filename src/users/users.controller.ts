@@ -1,11 +1,11 @@
 import { Controller, Post, Body, Delete, ValidationPipe, Get, UseGuards, Param, SetMetadata, Put } from '@nestjs/common'
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
-import { ApiHeaders } from 'src/decorators/api'
+import { ApiHeaders } from '../decorators/api'
 import { ApiTags } from '@nestjs/swagger'
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard'
+import { JwtAuthGuard } from '../guards/jwt-auth.guard'
+import { RolesGuard } from '../guards/roles.guard'
 import { User } from './schemas/user.schema'
-import { RolesGuard } from 'src/guards/roles.guard'
 
 @ApiTags('users')
 @Controller('users')
