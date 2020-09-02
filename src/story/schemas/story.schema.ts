@@ -1,8 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document, Types } from 'mongoose'
-import { User } from 'src/users/schemas/user.schema'
-import { Orientation } from 'src/users/enums/orientation.enum'
-import { ToArray } from 'src/helpers/to-array.helper'
+import { User } from '../../users/schemas/user.schema'
+import { Orientation } from '../../enums/orientation.enum'
+import { ToArray } from '../../helpers/to-array.helper'
+import { Category } from '../../enums/category'
 
 @Schema({
     toJSON: {
@@ -34,6 +35,13 @@ export class Story extends Document {
     default: 'hetero'
   })
   orientation: string
+
+  @Prop({
+    type: String,
+    enum: ToArray(Category),
+    default: 'mf'
+  })
+  category: string
 
   @Prop({
     type: Date,

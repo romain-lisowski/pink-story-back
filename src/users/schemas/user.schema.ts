@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
 import { Optional } from '@nestjs/common'
-import { Gender } from '../enums/gender.enum'
-import { Role } from '../enums/role.enum'
-import { Orientation } from '../enums/orientation.enum'
-import { ToArray } from 'src/helpers/to-array.helper'
+import { Gender } from '../../enums/gender.enum'
+import { Role } from '../../enums/role.enum'
+import { Orientation } from '../../enums/orientation.enum'
+import { ToArray } from '../../helpers/to-array.helper'
 @Schema({
     toJSON: {
       transform: function(doc, ret, options) {

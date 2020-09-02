@@ -1,7 +1,8 @@
 import { IsString, IsDate, IsEnum, IsOptional } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
 import { User } from 'src/users/schemas/user.schema'
-import { Orientation } from 'src/users/enums/orientation.enum'
+import { Orientation } from 'src/enums/orientation.enum'
+import { Category } from 'src/enums/category'
 
 export class CreateStoryDto {
   @ApiProperty()
@@ -23,6 +24,10 @@ export class CreateStoryDto {
   @ApiProperty({ enum: Orientation, enumName: 'Orientation' })
   @IsEnum(Orientation)
   readonly orientation: string
+
+  @ApiProperty({ enum: Category, enumName: 'Category' })
+  @IsEnum(Category)
+  readonly category: string
 
   @ApiProperty()
   @IsDate()
