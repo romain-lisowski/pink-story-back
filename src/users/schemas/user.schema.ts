@@ -5,6 +5,8 @@ import { Gender } from '../enums/gender.enum'
 import { Role } from '../enums/role.enum'
 import { Orientation } from '../enums/orientation.enum'
 import { ToArray } from 'src/helpers/to-array.helper'
+import { Timestamp } from 'mongodb'
+import { timeStamp } from 'console'
 
 @Schema({
     toJSON: {
@@ -57,6 +59,12 @@ export class User extends Document {
   @Prop()
   @Optional()
   description: string
+
+  @Prop({
+    type: Date,
+    default: Date.now
+  })
+  createdAt: Date
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)
