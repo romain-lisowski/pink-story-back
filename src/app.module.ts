@@ -5,7 +5,7 @@ import { AppService } from './app.service'
 import { AuthModule } from './auth/auth.module'
 import { UsersModule } from './users/users.module'
 import { StoriesModule } from './story/stories.module'
-import { CommentModule } from './comment/comment.module';
+import { CommentsModule } from './comment/comments.module'
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { CommentModule } from './comment/comment.module';
     MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING, {
       useFindAndModify: false,
       useCreateIndex: true
-    }), StoriesModule, CommentModule],
+    }), StoriesModule, CommentsModule],
   controllers: [AppController],
   providers: [AppService],
 })
