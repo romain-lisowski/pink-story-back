@@ -1,7 +1,7 @@
-import { IsString, IsDate, IsEnum, IsOptional } from 'class-validator'
+import { IsString } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
 import { User } from '../../users/schemas/user.schema'
-import { Story } from '../../story/schemas/story.schema'
+import { Story } from '../../stories/schemas/story.schema'
 
 export class CreateCommentDto {
   @ApiProperty()
